@@ -1,115 +1,270 @@
 import { useState } from 'react'
 import './App.css'
 
+import artic1 from './assets/products/artic-1.jpg'
+import pacific1 from './assets/products/pacific-1.png'
+import tropic1 from './assets/products/tropic-1.jpg'
+import sonar1 from './assets/products/sonar-1.jpg'
+import sonar2 from './assets/products/sonar-2.png'
+import blanka1 from './assets/products/blanka-1.png'
+import colorall1 from './assets/products/colorall-1.jpg'
+import colorall2 from './assets/products/colorall-2.jpg'
+import colorall3 from './assets/products/colorall-3.jpg'
+import medicare1 from './assets/products/medicare-1.jpg'
+import cleanspace1 from './assets/products/cleanspace-1.jpg'
+import boxer1 from './assets/products/boxer-1.png'
+import baffle1 from './assets/products/baffle-1.png'
+import mono1 from './assets/products/mono-1.png'
+import mono2 from './assets/products/mono-2.png'
+import eclipse1 from './assets/products/eclipse-1.png'
+import eclipse2 from './assets/products/eclipse-2.png'
+import canva1 from './assets/products/canva-1.png'
+
 function App() {
   const [selectedProduct, setSelectedProduct] = useState(null)
 
   const products = [
     {
-      id: 'mono',
-      name: 'Mono Acoustic',
-      desc: '無縫吸音天花系統',
-      images: [
-        'https://images.unsplash.com/photo-1497366754035-f200968a6e72',
-        'https://images.unsplash.com/photo-1497366412874-3415097a27e7',
-        'https://images.unsplash.com/photo-1518005020951-eccb494ad742',
-      ],
+      id: 'artic',
+      category: '基礎產品系列',
+      name: 'Rockfon Artic',
+      desc: '經濟實惠的基本款白色吸音天花板',
+      images: [artic1],
       detail:
-        'Rockfon Mono Acoustic 是高階無縫吸音天花系統，適合需要整體美觀、優異聲學表現與高質感室內設計的空間。',
-      features: ['無縫整體外觀', '高吸音表現', '適合高端設計空間', '可改善混響時間'],
-      applications: ['企業總部', '飯店大廳', '展示空間', '高級住宅'],
+        'Rockfon Artic 是基礎型白色吸音天花板，適合需要控制預算、同時仍重視吸音、防潮與穩定性的室內空間。',
+      features: [
+        'αw 0.90，吸音等級 Class A',
+        '抗下陷、抗黴菌性能',
+        '相對濕度 100% 環境下保持穩定',
+        '依據 EN 13964 / EN 717-1 歸類為 E1 級',
+        'VOCs 釋放量極低',
+      ],
+      applications: ['辦公室', '學校', '商業空間', '公共空間'],
+    },
+    {
+      id: 'pacific',
+      category: '基礎產品系列',
+      name: 'Rockfon Pacific',
+      desc: '輕量化、易搬運安裝的經濟型吸音天花板',
+      images: [pacific1],
+      detail:
+        'Rockfon Pacific 厚度僅約 12mm，重量輕，方便搬運與安裝，適合一般商業與公共空間使用。',
+      features: [
+        '厚度約 12mm，重量輕',
+        'αw 0.80，吸音等級 Class B',
+        '抗下陷、抗黴菌性能',
+        '相對濕度 100% 環境下保持穩定',
+        '依據 EN 13964 / EN 717-1 歸類為 E1 級',
+      ],
+      applications: ['辦公室', '商業空間', '公共空間', '教育空間'],
+    },
+    {
+      id: 'tropic',
+      category: '進階產品系列',
+      name: 'Rockfon Tropic',
+      desc: '高光反射平滑白色表面，兼具聲學與性價比',
+      images: [tropic1],
+      detail:
+        'Rockfon Tropic 具備良好聲學表現與高光反射平滑白色表面，可提升室內明亮度，是性價比極高的進階產品。',
+      features: [
+        'NRC 0.90，Class A 級吸音',
+        '高光反射的平滑白色表面',
+        '提升室內明亮度',
+        '優異防火性能',
+        '抗下陷、抗霉變能力',
+        '可依需求生產 X 邊型及 25mm 厚度',
+      ],
+      applications: ['辦公室', '學校', '商業空間', '公共工程'],
     },
     {
       id: 'sonar',
-      name: 'Sonar',
-      desc: '高性能模組化吸音天花',
-      images: [
-        'https://images.unsplash.com/photo-1497366811353-6870744d04b2',
-        'https://images.unsplash.com/photo-1497366216548-37526070297c',
-        'https://images.unsplash.com/photo-1604328698692-f76ea9498e76',
-      ],
+      category: '高階產品系列',
+      name: 'Rockfon Sonar',
+      desc: '高性能模組化吸音天花，具柔和細紋質感',
+      images: [sonar1, sonar2],
       detail:
-        'Sonar 系列適合辦公室、會議室、教育空間與商業建築，兼具高吸音性能與施工效率。',
-      features: ['高 NRC 吸音', '模組化施工', '外觀簡潔', '維修方便'],
-      applications: ['辦公室', '會議室', '學校', '商場'],
+        'Rockfon Sonar 提供卓越聲學控制能力，表面具輕微細紋質感，觀感柔和且耐污，適合高規格辦公、教育與公共空間。',
+      features: [
+        'NRC 最高可達 0.95',
+        '表面輕微細紋質感處理',
+        '觀感柔和且耐污',
+        '多樣邊型與尺寸選擇',
+        '配合各種設計需求',
+      ],
+      applications: ['辦公室', '會議室', '學校', '公共空間'],
     },
     {
       id: 'blanka',
-      name: 'Blanka',
-      desc: '高白度、高反射率天花板',
-      images: [
-        'https://images.unsplash.com/photo-1497366754035-f200968a6e72',
-        'https://images.unsplash.com/photo-1497366858526-0766cadbe8fa',
-        'https://images.unsplash.com/photo-1497366672149-e5e4b4d34eb3',
-      ],
+      category: '高階產品系列',
+      name: 'Rockfon Blanka',
+      desc: '超白、深霧面、高光反射率吸音天花板',
+      images: [blanka1],
       detail:
-        'Blanka 系列具有高白度與高光反射率，可提升空間明亮感，並有助於降低照明能耗。',
-      features: ['高白度', '高反射率', '提升空間亮度', '適合大面積空間'],
-      applications: ['辦公室', '公共空間', '教育空間'],
+        'Rockfon Blanka 具超白深霧面的平滑表面，能提升空間明亮度與質感，並具一流吸音性能。',
+      features: [
+        '反射率高達 87%',
+        '光線擴散 > 99%',
+        'NRC 可達 1.00，吸音等級 Class A',
+        '板面經防靜電及耐污強化處理',
+        '使用壽命長',
+      ],
+      applications: ['高階辦公室', '學校', '公共空間', '展示空間'],
+    },
+    {
+      id: 'color-all',
+      category: '高階產品系列',
+      name: 'Rockfon Color-all',
+      desc: '多色彩吸音天花，滿足設計與聲學需求',
+      images: [colorall1, colorall2, colorall3],
+      detail:
+        'Rockfon Color-all 提供豐富色彩選擇，可讓室內設計同時保有高聲學性能與防火表現。',
+      features: [
+        '共有 34 種專屬顏色',
+        'NRC 達 0.85~0.95',
+        '防火 A1 等級性能',
+        '表面經抗 UV 處理',
+        '色澤長久穩定',
+      ],
+      applications: ['設計型辦公室', '學校', '餐飲空間', '商場'],
+    },
+    {
+      id: 'medicare',
+      category: '特殊性能產品系列',
+      name: 'Rockfon MediCare 醫療潔淨系列',
+      desc: '專為醫療衛生環境設計的吸音天花系統',
+      images: [medicare1],
+      detail:
+        'Rockfon MediCare 系列專為醫療衛生環境設計，適合手術室、無菌病房、實驗室與製藥廠等高潔淨室內空間。',
+      features: [
+        '醫療衛生環境專用',
+        '適合高潔淨需求',
+        '兼具吸音與室內環境品質',
+        '適用醫療與實驗空間',
+      ],
+      applications: ['手術室', '無菌病房', '實驗室', '製藥廠'],
     },
     {
       id: 'cleanspace',
-      name: 'CleanSpace',
-      desc: '醫療與潔淨空間專用系列',
-      images: [
-        'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d',
-        'https://images.unsplash.com/photo-1504439468489-c8920d796a29',
-        'https://images.unsplash.com/photo-1586773860418-d37222d8fce3',
-      ],
+      category: '特殊性能產品系列',
+      name: 'Rockfon CleanSpace 潔淨型',
+      desc: '潔淨室與食品工業需求專用系列',
+      images: [cleanspace1],
       detail:
-        'CleanSpace 適合醫院、實驗室與潔淨室，具備優異清潔性、防潮穩定性與高衛生標準。',
-      features: ['易清潔', '防潮', '適合高衛生要求', '穩定耐用'],
-      applications: ['醫院', '實驗室', '潔淨室'],
+        'Rockfon CleanSpace 針對潔淨室和食品工業需求設計，具耐化學品腐蝕能力，適合高衛生與高穩定性空間。',
+      features: [
+        '針對潔淨室與食品工業需求',
+        '耐化學品腐蝕',
+        '適合高衛生標準空間',
+        '防潮穩定',
+      ],
+      applications: ['實驗室', '無塵車間', '電子廠', '食品加工廠', '廚房'],
+    },
+    {
+      id: 'boxer',
+      category: '特殊性能產品系列',
+      name: 'Rockfon Boxer 高抗衝擊',
+      desc: '高度耐衝擊吸音板',
+      images: [boxer1],
+      detail:
+        'Rockfon Boxer 是高度耐衝擊吸音板，能承受球體撞擊等衝擊而不破損脫落，適合運動與多功能空間。',
+      features: [
+        '高度耐衝擊',
+        '承受球體撞擊',
+        '不易破損脫落',
+        '兼具吸音與安全性',
+      ],
+      applications: ['學校體育館', '室內球場', '健身房', '多功能廳'],
+    },
+    {
+      id: 'baffles',
+      category: '特殊性能產品系列',
+      name: 'Rockfon 障板系列',
+      desc: '針對技術空間與噪音空間的吸音解決方案',
+      images: [baffle1],
+      detail:
+        'Rockfon 障板系列可應用於噪聲較大的技術空間，提供高效吸音解決方案。',
+      features: [
+        'NRC 高達 1.00+',
+        '適合大空間吸音改善',
+        '針對技術空間設計',
+        '可降低噪聲與混響',
+      ],
+      applications: ['工廠車間', '倉庫', '地下停車場', '技術空間'],
+    },
+    {
+      id: 'mono-acoustic',
+      category: '創新設計產品系列',
+      name: 'Rockfon Mono Acoustic 無縫聲學天花',
+      desc: '無縫一體化吸音天花與牆面系統',
+      images: [mono1, mono2],
+      detail:
+        'Rockfon Mono Acoustic 將出色吸音性能與極致連續表面外觀結合，完成後呈現如石膏抹灰天花般平滑無縫的整體，不見任何板材接縫，卻保有高聲學效能。',
+      features: [
+        '無縫一體化外觀',
+        '可用於天花與牆面',
+        '顯著改善室內音質',
+        '保有建築空間一體感',
+        '被譽為「聽得見的安靜、看不見的吸音」',
+      ],
+      applications: ['高階辦公室', '展演空間', '飯店大廳', '接待空間'],
     },
     {
       id: 'eclipse',
-      name: 'Eclipse',
-      desc: '懸吊式吸音雲朵',
-      images: [
-        'https://images.unsplash.com/photo-1518005020951-eccb494ad742',
-        'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85',
-        'https://images.unsplash.com/photo-1511818966892-d7d671e672a2',
-      ],
+      category: '創新設計產品系列',
+      name: 'Rockfon Eclipse 懸吊式浮板',
+      desc: '無框造型、雙面吸音的懸吊式吸音雲朵',
+      images: [eclipse1, eclipse2, colorall1, colorall2, colorall3],
       detail:
-        'Eclipse 為高設計感懸吊式吸音雲朵，適合挑高空間、開放式辦公室、餐廳與公共空間聲學改善。',
-      features: ['設計感造型', '局部吸音', '施工彈性高', '適合挑高空間'],
-      applications: ['餐廳', '開放辦公室', '商場', '公共空間'],
+        'Rockfon Eclipse 板邊無金屬框，四周光滑平直，懸吊後宛如漂浮於空間中的雲朵。正反兩面均覆蓋透聲貼面，可最大化雙面吸音量並提升等效吸聲面積。',
+      features: [
+        '無框造型，四周光滑平直',
+        '雙面吸音，提升等效吸聲面積',
+        '標準形狀包含正方形、長方形、圓形等',
+        '可依需求定製任意形狀與顏色',
+        'Eclipse Colour 子系列提供標準 11 種預選顏色',
+      ],
+      applications: ['開放式辦公室', '餐廳', '教室', '幼兒園', '挑高空間'],
+    },
+    {
+      id: 'canva',
+      category: '創新設計產品系列',
+      name: 'Rockfon Canva 藝術牆板',
+      desc: '可客製圖案與尺寸的室內吸音牆板',
+      images: [canva1],
+      detail:
+        'Rockfon Canva Wall Panel 是多功能且美觀的室內吸音牆板，透過卓越吸音和幾乎無限的設計可能，提升空間聲學與美感。',
+      features: [
+        '可自訂面板尺寸',
+        '可自訂顏色與圖案',
+        '可打造牆上的吸音藝術品',
+        '改善室內安靜度與設計質感',
+      ],
+      applications: ['辦公室', '接待空間', '會議室', '教育空間', '商業空間'],
     },
   ]
+
+  const categories = ['基礎產品系列', '進階產品系列', '高階產品系列', '特殊性能產品系列', '創新設計產品系列']
 
   if (selectedProduct) {
     return (
       <div className="website">
         <nav className="navbar">
-          <div className="logo" onClick={() => setSelectedProduct(null)}>
-            ROCKFON
-          </div>
-
+          <div className="logo" onClick={() => setSelectedProduct(null)}>ROCKFON</div>
           <div className="nav-links">
-            <button className="nav-button" onClick={() => setSelectedProduct(null)}>
-              回首頁
-            </button>
+            <button className="nav-button" onClick={() => setSelectedProduct(null)}>回首頁</button>
           </div>
         </nav>
 
         <section className="product-detail-page">
-          <button className="back-button" onClick={() => setSelectedProduct(null)}>
-            ← 回產品總覽
-          </button>
-
+          <button className="back-button" onClick={() => setSelectedProduct(null)}>← 回產品總覽</button>
+          <p className="section-label">{selectedProduct.category}</p>
           <h1>{selectedProduct.name}</h1>
-
-          <p className="product-detail-subtitle">
-            {selectedProduct.desc}
-          </p>
-
-          <p className="product-detail-text">
-            {selectedProduct.detail}
-          </p>
+          <p className="product-detail-subtitle">{selectedProduct.desc}</p>
+          <p className="product-detail-text">{selectedProduct.detail}</p>
 
           <div className="gallery">
-            {selectedProduct.images.map((img) => (
-              <img key={img} src={img} alt={selectedProduct.name} />
+            {selectedProduct.images.map((img, index) => (
+              <img key={`${selectedProduct.id}-${index}`} src={img} alt={`${selectedProduct.name} ${index + 1}`} />
             ))}
           </div>
 
@@ -135,7 +290,6 @@ function App() {
     <div className="website">
       <nav className="navbar">
         <div className="logo">ROCKFON</div>
-
         <div className="nav-links">
           <a href="#products">產品系列</a>
           <a href="#applications">應用場域</a>
@@ -147,64 +301,55 @@ function App() {
       <header className="hero">
         <div className="hero-overlay">
           <p className="eyebrow">European Acoustic Ceiling Solutions</p>
-
           <h1>Rockfon 高階岩棉吸音天花系統</h1>
-
           <p className="hero-text">
-            為建築師、設計師、工程顧問與業主打造兼具聲學、防火、防潮與美學的專業天花解決方案。
+            從基礎型、進階型、高階設計型到醫療潔淨與特殊性能系列，為建築師、設計師、工程顧問與業主提供完整聲學天花解決方案。
           </p>
-
           <div className="hero-buttons">
-            <a href="#products" className="btn primary">
-              查看產品系列
-            </a>
-
-            <a href="#downloads" className="btn secondary">
-              下載送審資料
-            </a>
+            <a href="#products" className="btn primary">查看產品系列</a>
+            <a href="#downloads" className="btn secondary">下載送審資料</a>
           </div>
         </div>
       </header>
 
       <section className="section intro">
         <p className="section-label">Brand Advantage</p>
-
         <h2>為高規格建築空間而生</h2>
-
         <p className="section-desc">
-          Rockfon 以岩棉為核心材料，提供優異吸音、防火、防潮與室內空氣品質表現。
+          Rockfon 以岩棉為核心材料，提供優異吸音、防火、防潮、低排放與設計彈性，適用於辦公、醫療、教育、商業、潔淨室與公共工程。
         </p>
       </section>
 
       <section className="section dark-section" id="products">
         <p className="section-label gold">Product Portfolio</p>
+        <h2>Rockfon 產品系列</h2>
 
-        <h2>主要產品系列</h2>
-
-        <div className="product-grid">
-          {products.map((item) => (
-            <div
-              className="product-card clickable"
-              key={item.id}
-              onClick={() => setSelectedProduct(item)}
-            >
-              <h3>{item.name}</h3>
-
-              <p className="product-desc">{item.desc}</p>
-
-              <p>{item.detail}</p>
-
-              <p className="read-more">查看詳細說明 →</p>
+        {categories.map((category) => (
+          <div key={category} style={{ marginTop: '44px' }}>
+            <h3 style={{ color: '#d7b15b', fontSize: '26px', marginBottom: '20px' }}>{category}</h3>
+            <div className="product-grid">
+              {products
+                .filter((item) => item.category === category)
+                .map((item) => (
+                  <div
+                    className="product-card clickable"
+                    key={item.id}
+                    onClick={() => setSelectedProduct(item)}
+                  >
+                    <h3>{item.name}</h3>
+                    <p className="product-desc">{item.desc}</p>
+                    <p>{item.detail}</p>
+                    <p className="read-more">查看詳細說明 →</p>
+                  </div>
+                ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </section>
 
       <section className="section" id="applications">
         <p className="section-label">Applications</p>
-
         <h2>應用場域</h2>
-
         <div className="application-grid">
           <div className="application-card">辦公室</div>
           <div className="application-card">醫療空間</div>
@@ -217,22 +362,18 @@ function App() {
 
       <section className="section downloads" id="downloads">
         <p className="section-label">Submittal Package</p>
-
         <h2>送審資料下載</h2>
-
         <div className="download-grid">
           <div className="download-card">
             <h3>產品型錄</h3>
             <p>產品系列介紹與應用建議。</p>
             <button>下載 PDF</button>
           </div>
-
           <div className="download-card">
             <h3>測試報告</h3>
-            <p>吸音、防火與防潮相關文件。</p>
+            <p>吸音、防火、防潮與室內空氣品質相關文件。</p>
             <button>下載 PDF</button>
           </div>
-
           <div className="download-card">
             <h3>安裝手冊</h3>
             <p>施工方式與系統節點說明。</p>
@@ -244,12 +385,9 @@ function App() {
       <section className="contact" id="contact">
         <div>
           <p className="section-label gold">Contact</p>
-
           <h2>需要產品建議或送審協助？</h2>
-
-          <p>我們可協助產品選型、規格比對與送審資料準備。</p>
+          <p>我們可協助產品選型、規格比對與工程送審資料準備。</p>
         </div>
-
         <form>
           <input type="text" placeholder="姓名 / 公司" />
           <input type="email" placeholder="Email" />
