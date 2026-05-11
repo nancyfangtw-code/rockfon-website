@@ -29,8 +29,9 @@ body {
 }
 
 .overlay h1 {
-  font-size: 60px;
+  font-size: 64px;
   margin-bottom: 20px;
+  line-height: 1.1;
 }
 
 .overlay p {
