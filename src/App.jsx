@@ -1,21 +1,21 @@
 import { useState } from 'react'
 import './App.css'
 
-import artic1 from './assets/products/artic-1.jpg'
-import pacific1 from './assets/products/pacific-1.png'
-import tropic1 from './assets/products/tropic-1.jpg'
+import artic1 from './assets/products/artic01.jpg'
+import pacific1 from './assets/products/pacific01.jpg'
+import tropic1 from './assets/products/tropic01.jpg'
 import sonar1 from './assets/products/sonar-1.jpg'
-import sonar2 from './assets/products/sonar-2.png'
-import blanka1 from './assets/products/blanka-1.png'
+import sonar2 from './assets/products/sonar02.jpg'
+import blanka1 from './assets/products/blanka01.jpg'
 import colorall1 from './assets/products/colorall-1.jpg'
 import colorall2 from './assets/products/colorall-2.jpg'
 import colorall3 from './assets/products/colorall-3.jpg'
 import medicare1 from './assets/products/medicare-1.jpg'
 import cleanspace1 from './assets/products/cleanspace-1.jpg'
 import boxer1 from './assets/products/boxer-1.png'
-import baffle1 from './assets/products/baffle-1.png'
-import mono1 from './assets/products/mono-1.png'
-import mono2 from './assets/products/mono-2.png'
+import baffle1 from './assets/products/baffle01.jpg'
+import mono1 from './assets/products/mono01.jpg'
+import mono2 from './assets/products/mono02.jpg'
 import eclipse1 from './assets/products/eclipse-1.png'
 import eclipse2 from './assets/products/eclipse-2.png'
 import canva1 from './assets/products/canva-1.png'
@@ -249,7 +249,7 @@ function App() {
     return (
       <div className="website">
         <nav className="navbar">
-          <div className="logo" onClick={() => setSelectedProduct(null)}>ROCKFON</div>
+          <a className="logo" href="https://www.rockunion.com.tw">ROCKUNION</a>
           <div className="nav-links">
             <button className="nav-button" onClick={() => setSelectedProduct(null)}>回首頁</button>
           </div>
@@ -289,7 +289,7 @@ function App() {
   return (
     <div className="website">
       <nav className="navbar">
-        <div className="logo">ROCKFON</div>
+        <a className="logo" href="https://www.rockunion.com.tw">ROCKUNION</a>
         <div className="nav-links">
           <a href="#products">產品系列</a>
           <a href="#applications">應用場域</a>
@@ -301,18 +301,18 @@ function App() {
       <header className="hero">
         <div className="hero-overlay">
           <p className="eyebrow">European Acoustic Ceiling Solutions</p>
-          <h1>Rockfon 高階岩棉吸音天花板系統</h1>
+          <h1>Rockfon 高階岩棉吸音天花板</h1>
           <p className="hero-text">
-            從基礎型、進階型、高階設計型到醫療潔淨與特殊性能系列，為建築師、設計師、工程顧問與業主提供完整聲學天花解決方案。
+            從基礎型、進階型、高階設計型到醫療潔淨與特殊性能系列，為建築師、設計師、工程顧問與業主提供完整聲學天花板解決方案。
           </p>
           <div className="hero-buttons">
             <a href="#products" className="btn primary">查看產品系列</a>
             <a href="#downloads" className="btn secondary">下載送審資料</a>
           </div>
           <div className="hero-signature">
-            <span>Stone wool acoustic panels</span>
-            <span>Commercial ceiling systems</span>
-            <span>European material standards</span>
+            <span>純岩棉吸音材料</span>
+            <span>健康/高性能雙綠建材標章</span>
+            <span>符合防火與低排放標準</span>
           </div>
         </div>
       </header>
