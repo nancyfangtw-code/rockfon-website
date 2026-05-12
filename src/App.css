@@ -547,6 +547,20 @@ tbody tr:hover {
   font-size: 25px;
 }
 
+.catalog-download-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.catalog-download-list button {
+  margin-top: 0;
+  padding: 11px 15px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
 .download-card button,
 .contact button {
   margin-top: 20px;
@@ -1025,6 +1039,16 @@ footer {
 
   .catalog-modal-item button {
     width: 100%;
+  }
+
+  .catalog-download-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .catalog-download-list button {
+    width: 100%;
+    white-space: normal;
   }
 
   .colorall-palette-trigger {

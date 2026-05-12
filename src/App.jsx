@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import './App.css'
 
 import artic1 from './assets/products/artic01.jpg'
@@ -48,10 +48,74 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [isColorAllPaletteOpen, setIsColorAllPaletteOpen] = useState(false)
   const [isEclipsePaletteOpen, setIsEclipsePaletteOpen] = useState(false)
+  const [isCatalogModalOpen, setIsCatalogModalOpen] = useState(false)
+  const catalogDownloads = [
+    {
+      name: 'Blanka',
+      path: '/documents/Catalogue/Blanka/apac-en-tile-datasheet-rockfon-blanka_d_09_2024.pdf',
+    },
+    {
+      name: 'Boxer',
+      path: '/documents/Catalogue/Boxer/apac-en-tile-datasheet-rockfon-boxer_d_09_2024.pdf',
+    },
+    {
+      name: 'Canva',
+      path: '/documents/Catalogue/Canva/apac-en-tile-datasheet-rockfon-canva-wall-panel_d_09_2024.pdf',
+    },
+    {
+      name: 'CleanSpace',
+      path: '/documents/Catalogue/CleanSpace/apac-en-tile-datasheet-rockfon-cleanspace-pure_d_09_2024.pdf',
+    },
+    {
+      name: 'Color-All',
+      path: '/documents/Catalogue/Color-All/apac-en-tile-datasheet-rockfon-color-all_d_09_2024.pdf',
+    },
+    {
+      name: 'Eclipse',
+      path: '/documents/Catalogue/Eclipse/apac-en-tile-datasheet-rockfon-eclipse_d_09_2024.pdf',
+    },
+    {
+      name: 'MediCare',
+      path: '/documents/Catalogue/MediCare/apac-en-tile-datasheet-rockfon-medicare-standard_d_09_2024.pdf',
+    },
+    {
+      name: 'Mono Acoustic',
+      path: '/documents/Catalogue/Mono Acoustic/APAC-EN Non-catalogue-Tile-Datasheet-Rockfon-Mono-Acoustic_12_2024.pdf',
+    },
+    {
+      name: 'Pacific',
+      path: '/documents/Catalogue/Pacific/apac-en-tile-datasheet-rockfon-pacific_d_09_2024.pdf',
+    },
+    {
+      name: 'Sonar',
+      path: '/documents/Catalogue/Sonar/apac-en-tile-datasheet-rockfon-sonar-activity_d_09_2024.pdf',
+    },
+    {
+      name: 'Tropic',
+      path: '/documents/Catalogue/Tropic/apac-en-tile-datasheet-rockfon-tropic_d_09_2024.pdf',
+    },
+  ]
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [selectedProduct])
+
+  const handlePdfOpen = async (path) => {
+    const targetPath = encodeURI(path)
+
+    try {
+      const response = await fetch(targetPath, { method: 'HEAD' })
+
+      if (!response.ok) {
+        console.warn(`PDF file not found: ${path}`)
+        return
+      }
+
+      window.open(targetPath, '_blank', 'noopener,noreferrer')
+    } catch (error) {
+      console.warn(`Unable to access PDF file: ${path}`, error)
+    }
+  }
 
   const products = [
     {
@@ -501,7 +565,9 @@ function App() {
           <div className="download-card">
             <h3>產品型錄</h3>
             <p>產品系列介紹與應用建議。</p>
-            <button>下載 PDF</button>
+            <button type="button" onClick={() => setIsCatalogModalOpen(true)}>
+              下載 PDF
+            </button>
           </div>
           <div className="download-card">
             <h3>測試報告</h3>
@@ -534,6 +600,43 @@ function App() {
       <footer>
         <p>© 2026 Rockfon Product Website Demo</p>
       </footer>
+
+      {isCatalogModalOpen && (
+        <div
+          className="modal-backdrop"
+          role="presentation"
+          onClick={() => setIsCatalogModalOpen(false)}
+        >
+          <div
+            className="catalog-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="catalog-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="modal-close"
+              type="button"
+              aria-label="關閉"
+              onClick={() => setIsCatalogModalOpen(false)}
+            >
+              ×
+            </button>
+            <p className="section-label gold">Product Catalogues</p>
+            <h2 id="catalog-modal-title">選擇產品型錄</h2>
+            <div className="catalog-modal-list">
+              {catalogDownloads.map((catalog) => (
+                <div className="catalog-modal-item" key={catalog.path}>
+                  <span>{catalog.name}</span>
+                  <button type="button" onClick={() => handlePdfOpen(catalog.path)}>
+                    下載
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
