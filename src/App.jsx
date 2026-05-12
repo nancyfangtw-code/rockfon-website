@@ -301,13 +301,18 @@ function App() {
       <header className="hero">
         <div className="hero-overlay">
           <p className="eyebrow">European Acoustic Ceiling Solutions</p>
-          <h1>Rockfon 高階岩棉吸音天花系統</h1>
+          <h1>Rockfon 高階岩棉吸音天花板系統</h1>
           <p className="hero-text">
             從基礎型、進階型、高階設計型到醫療潔淨與特殊性能系列，為建築師、設計師、工程顧問與業主提供完整聲學天花解決方案。
           </p>
           <div className="hero-buttons">
             <a href="#products" className="btn primary">查看產品系列</a>
             <a href="#downloads" className="btn secondary">下載送審資料</a>
+          </div>
+          <div className="hero-signature">
+            <span>Stone wool acoustic panels</span>
+            <span>Commercial ceiling systems</span>
+            <span>European material standards</span>
           </div>
         </div>
       </header>
@@ -318,6 +323,23 @@ function App() {
         <p className="section-desc">
           Rockfon 以岩棉為核心材料，提供優異吸音、防火、防潮、低排放與設計彈性，適用於辦公、醫療、教育、商業、潔淨室與公共工程。
         </p>
+        <div className="brand-proof">
+          <div>
+            <span>01</span>
+            <strong>Acoustic Comfort</strong>
+            <p>Engineered for quieter commercial interiors.</p>
+          </div>
+          <div>
+            <span>02</span>
+            <strong>Material Integrity</strong>
+            <p>Stone wool performance with refined surface finishes.</p>
+          </div>
+          <div>
+            <span>03</span>
+            <strong>Specification Ready</strong>
+            <p>Built for architects, consultants and project delivery.</p>
+          </div>
+        </div>
       </section>
 
       <section className="section dark-section" id="products">
@@ -325,8 +347,8 @@ function App() {
         <h2>Rockfon 產品系列</h2>
 
         {categories.map((category) => (
-          <div key={category} style={{ marginTop: '44px' }}>
-            <h3 style={{ color: '#d7b15b', fontSize: '26px', marginBottom: '20px' }}>{category}</h3>
+          <div className="product-family" key={category}>
+            <h3>{category}</h3>
             <div className="product-grid">
               {products
                 .filter((item) => item.category === category)
@@ -336,10 +358,16 @@ function App() {
                     key={item.id}
                     onClick={() => setSelectedProduct(item)}
                   >
-                    <h3>{item.name}</h3>
-                    <p className="product-desc">{item.desc}</p>
-                    <p>{item.detail}</p>
-                    <p className="read-more">查看詳細說明 →</p>
+                    <div className="product-media">
+                      <img src={item.images[0]} alt={item.name} />
+                    </div>
+                    <div className="product-card-body">
+                      <p className="product-category">{item.category}</p>
+                      <h3>{item.name}</h3>
+                      <p className="product-desc">{item.desc}</p>
+                      <p>{item.detail}</p>
+                      <p className="read-more">查看詳細說明 →</p>
+                    </div>
                   </div>
                 ))}
             </div>
