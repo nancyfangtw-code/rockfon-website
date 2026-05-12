@@ -1,27 +1,57 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 import artic1 from './assets/products/artic01.jpg'
+import artic2 from './assets/products/artic02.jpg'
+import artic3 from './assets/products/artic03.jpg'
+import artic4 from './assets/products/artic10.jpg'
 import pacific1 from './assets/products/pacific01.jpg'
 import tropic1 from './assets/products/tropic01.jpg'
-import sonar1 from './assets/products/sonar-1.jpg'
+import tropic2 from './assets/products/tropic02.jpg'
+import tropic3 from './assets/products/tropic03.jpg'
+import tropic4 from './assets/products/tropic04.jpg'
+import sonar1 from './assets/products/sonar01.jpg'
 import sonar2 from './assets/products/sonar02.jpg'
+import sonar3 from './assets/products/sonar03.jpg'
+import sonar4 from './assets/products/sonar04.jpg'
 import blanka1 from './assets/products/blanka01.jpg'
 import colorall1 from './assets/products/colorall-1.jpg'
 import colorall2 from './assets/products/colorall-2.jpg'
 import colorall3 from './assets/products/colorall-3.jpg'
-import medicare1 from './assets/products/medicare-1.jpg'
-import cleanspace1 from './assets/products/cleanspace-1.jpg'
+import colorallDetail1 from './assets/products/colorall01.jpg'
+import colorallDetail2 from './assets/products/colorall02.jpg'
+import colorallDetail3 from './assets/products/colorall03.jpg'
+import colorallDetail4 from './assets/products/colorall04.jpg'
+import colorall34color from './assets/products/colorall-34color.jpg'
+import medicare1 from './assets/products/medicare01.jpg'
+import medicare2 from './assets/products/medicare02.jpg'
+import medicare3 from './assets/products/medicare0.jpg'
+import medicare4 from './assets/products/medicare04.jpg'
+import cleanspace1 from './assets/products/cleanspace.jpg'
 import boxer1 from './assets/products/boxer-1.png'
 import baffle1 from './assets/products/baffle01.jpg'
+import baffle2 from './assets/products/baffle02.jpg'
+import baffle3 from './assets/products/baffle03.jpg'
+import baffle4 from './assets/products/baffle04.jpg'
 import mono1 from './assets/products/mono01.jpg'
 import mono2 from './assets/products/mono02.jpg'
-import eclipse1 from './assets/products/eclipse-1.png'
-import eclipse2 from './assets/products/eclipse-2.png'
-import canva1 from './assets/products/canva-1.png'
+import eclipse1 from './assets/products/Eclipse01.jpg'
+import eclipse11color from './assets/products/eclipse-11color.jpg'
+import eclipse2 from './assets/products/Eclipse2.jpg'
+import eclipse3 from './assets/products/Eclipse3.jpg'
+import eclipse4 from './assets/products/Eclipse4.jpg'
+import canva1 from './assets/products/canva01.jpg'
+import canva2 from './assets/products/canva02.jpg'
+import canva3 from './assets/products/canva03.jpg'
 
 function App() {
   const [selectedProduct, setSelectedProduct] = useState(null)
+  const [isColorAllPaletteOpen, setIsColorAllPaletteOpen] = useState(false)
+  const [isEclipsePaletteOpen, setIsEclipsePaletteOpen] = useState(false)
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [selectedProduct])
 
   const products = [
     {
@@ -29,7 +59,7 @@ function App() {
       category: '基礎產品系列',
       name: 'Rockfon Artic',
       desc: '經濟實惠的基本款白色吸音天花板',
-      images: [artic1],
+      images: [artic1, artic2, artic3, artic4],
       detail:
         'Rockfon Artic 是基礎型白色吸音天花板，適合需要控制預算、同時仍重視吸音、防潮與穩定性的室內空間。',
       features: [
@@ -63,7 +93,7 @@ function App() {
       category: '進階產品系列',
       name: 'Rockfon Tropic',
       desc: '高光反射平滑白色表面，兼具聲學與性價比',
-      images: [tropic1],
+      images: [tropic1, tropic2, tropic3, tropic4],
       detail:
         'Rockfon Tropic 具備良好聲學表現與高光反射平滑白色表面，可提升室內明亮度，是性價比極高的進階產品。',
       features: [
@@ -81,7 +111,7 @@ function App() {
       category: '高階產品系列',
       name: 'Rockfon Sonar',
       desc: '高性能模組化吸音天花，具柔和細紋質感',
-      images: [sonar1, sonar2],
+      images: [sonar1, sonar2, sonar3, sonar4],
       detail:
         'Rockfon Sonar 提供卓越聲學控制能力，表面具輕微細紋質感，觀感柔和且耐污，適合高規格辦公、教育與公共空間。',
       features: [
@@ -115,7 +145,7 @@ function App() {
       category: '高階產品系列',
       name: 'Rockfon Color-all',
       desc: '多色彩吸音天花，滿足設計與聲學需求',
-      images: [colorall1, colorall2, colorall3],
+      images: [colorallDetail1, colorallDetail2, colorallDetail3, colorallDetail4],
       detail:
         'Rockfon Color-all 提供豐富色彩選擇，可讓室內設計同時保有高聲學性能與防火表現。',
       features: [
@@ -132,7 +162,7 @@ function App() {
       category: '特殊性能產品系列',
       name: 'Rockfon MediCare 醫療潔淨系列',
       desc: '專為醫療衛生環境設計的吸音天花系統',
-      images: [medicare1],
+      images: [medicare1, medicare2, medicare3, medicare4],
       detail:
         'Rockfon MediCare 系列專為醫療衛生環境設計，適合手術室、無菌病房、實驗室與製藥廠等高潔淨室內空間。',
       features: [
@@ -180,7 +210,7 @@ function App() {
       category: '特殊性能產品系列',
       name: 'Rockfon 障板系列',
       desc: '針對技術空間與噪音空間的吸音解決方案',
-      images: [baffle1],
+      images: [baffle1, baffle2, baffle3, baffle4],
       detail:
         'Rockfon 障板系列可應用於噪聲較大的技術空間，提供高效吸音解決方案。',
       features: [
@@ -213,7 +243,7 @@ function App() {
       category: '創新設計產品系列',
       name: 'Rockfon Eclipse 懸吊式浮板',
       desc: '無框造型、雙面吸音的懸吊式吸音雲朵',
-      images: [eclipse1, eclipse2, colorall1, colorall2, colorall3],
+      images: [eclipse1, eclipse2, eclipse3, eclipse4],
       detail:
         'Rockfon Eclipse 板邊無金屬框，四周光滑平直，懸吊後宛如漂浮於空間中的雲朵。正反兩面均覆蓋透聲貼面，可最大化雙面吸音量並提升等效吸聲面積。',
       features: [
@@ -230,7 +260,7 @@ function App() {
       category: '創新設計產品系列',
       name: 'Rockfon Canva 藝術牆板',
       desc: '可客製圖案與尺寸的室內吸音牆板',
-      images: [canva1],
+      images: [canva1, canva2, canva3],
       detail:
         'Rockfon Canva Wall Panel 是多功能且美觀的室內吸音牆板，透過卓越吸音和幾乎無限的設計可能，提升空間聲學與美感。',
       features: [
@@ -262,6 +292,28 @@ function App() {
           <p className="product-detail-subtitle">{selectedProduct.desc}</p>
           <p className="product-detail-text">{selectedProduct.detail}</p>
 
+          {selectedProduct.id === 'color-all' && (
+            <button
+              type="button"
+              className="colorall-palette-trigger"
+              onClick={() => setIsColorAllPaletteOpen(true)}
+            >
+              <span className="colorall-palette-icon" aria-hidden="true">+</span>
+              <span>34種顏色選擇</span>
+            </button>
+          )}
+
+          {selectedProduct.id === 'eclipse' && (
+            <button
+              type="button"
+              className="colorall-palette-trigger"
+              onClick={() => setIsEclipsePaletteOpen(true)}
+            >
+              <span className="colorall-palette-icon" aria-hidden="true">+</span>
+              <span>11種顏色選擇</span>
+            </button>
+          )}
+
           <div className="gallery">
             {selectedProduct.images.map((img, index) => (
               <img key={`${selectedProduct.id}-${index}`} src={img} alt={`${selectedProduct.name} ${index + 1}`} />
@@ -282,6 +334,60 @@ function App() {
             ))}
           </div>
         </section>
+
+        {isColorAllPaletteOpen && (
+          <div
+            className="modal-backdrop"
+            role="presentation"
+            onClick={() => setIsColorAllPaletteOpen(false)}
+          >
+            <div
+              className="image-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="colorall-palette-title"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                className="modal-close"
+                type="button"
+                aria-label="關閉"
+                onClick={() => setIsColorAllPaletteOpen(false)}
+              >
+                ×
+              </button>
+              <h2 id="colorall-palette-title">34種顏色選擇</h2>
+              <img src={colorall34color} alt="Rockfon Color-all 34種顏色選擇" />
+            </div>
+          </div>
+        )}
+
+        {isEclipsePaletteOpen && (
+          <div
+            className="modal-backdrop"
+            role="presentation"
+            onClick={() => setIsEclipsePaletteOpen(false)}
+          >
+            <div
+              className="image-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="eclipse-palette-title"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                className="modal-close"
+                type="button"
+                aria-label="關閉"
+                onClick={() => setIsEclipsePaletteOpen(false)}
+              >
+                ×
+              </button>
+              <h2 id="eclipse-palette-title">11種顏色選擇</h2>
+              <img src={eclipse11color} alt="Rockfon Eclipse 11種顏色選擇" />
+            </div>
+          </div>
+        )}
       </div>
     )
   }
