@@ -49,50 +49,106 @@ function App() {
   const [isColorAllPaletteOpen, setIsColorAllPaletteOpen] = useState(false)
   const [isEclipsePaletteOpen, setIsEclipsePaletteOpen] = useState(false)
   const [isCatalogModalOpen, setIsCatalogModalOpen] = useState(false)
+  const [isInstallationModalOpen, setIsInstallationModalOpen] = useState(false)
+  const [selectedApplication, setSelectedApplication] = useState(null)
+  const [selectedCaseProduct, setSelectedCaseProduct] = useState(null)
   const catalogDownloads = [
     {
+      id: 'artic',
+      name: 'Artic',
+      path: '/documents/Catalogue/Artic/apac-en-tile-datasheet-rockfon-artic_d_09_2024.pdf',
+    },
+    {
+      id: 'baffles',
+      name: 'Baffle',
+      path: '/documents/Catalogue/Baffle/apac-en-tile-datasheet-rockfon-universal-baffle_d_09_2024.pdf',
+    },
+    {
+      id: 'blanka',
       name: 'Blanka',
       path: '/documents/Catalogue/Blanka/apac-en-tile-datasheet-rockfon-blanka_d_09_2024.pdf',
     },
     {
+      id: 'boxer',
       name: 'Boxer',
       path: '/documents/Catalogue/Boxer/apac-en-tile-datasheet-rockfon-boxer_d_09_2024.pdf',
     },
     {
+      id: 'canva',
       name: 'Canva',
       path: '/documents/Catalogue/Canva/apac-en-tile-datasheet-rockfon-canva-wall-panel_d_09_2024.pdf',
     },
     {
+      id: 'cleanspace',
       name: 'CleanSpace',
       path: '/documents/Catalogue/CleanSpace/apac-en-tile-datasheet-rockfon-cleanspace-pure_d_09_2024.pdf',
     },
     {
+      id: 'color-all',
       name: 'Color-All',
       path: '/documents/Catalogue/Color-All/apac-en-tile-datasheet-rockfon-color-all_d_09_2024.pdf',
     },
     {
+      id: 'eclipse',
       name: 'Eclipse',
       path: '/documents/Catalogue/Eclipse/apac-en-tile-datasheet-rockfon-eclipse_d_09_2024.pdf',
     },
     {
+      id: 'medicare',
       name: 'MediCare',
       path: '/documents/Catalogue/MediCare/apac-en-tile-datasheet-rockfon-medicare-standard_d_09_2024.pdf',
     },
     {
+      id: 'mono-acoustic',
       name: 'Mono Acoustic',
       path: '/documents/Catalogue/Mono Acoustic/APAC-EN Non-catalogue-Tile-Datasheet-Rockfon-Mono-Acoustic_12_2024.pdf',
     },
     {
+      id: 'pacific',
       name: 'Pacific',
       path: '/documents/Catalogue/Pacific/apac-en-tile-datasheet-rockfon-pacific_d_09_2024.pdf',
     },
     {
+      id: 'sonar',
       name: 'Sonar',
       path: '/documents/Catalogue/Sonar/apac-en-tile-datasheet-rockfon-sonar-activity_d_09_2024.pdf',
     },
     {
+      id: 'tropic',
       name: 'Tropic',
       path: '/documents/Catalogue/Tropic/apac-en-tile-datasheet-rockfon-tropic_d_09_2024.pdf',
+    },
+  ]
+  const installationDownloads = [
+    {
+      id: 'canva',
+      name: 'Canva',
+      path: '/documents/installation/Canva/rockfon-canva-floor-screen-installation-guide.pdf',
+    },
+    {
+      id: 'cleanspace',
+      name: 'CleanSpace',
+      path: '/documents/installation/CleanSpace/apac-en-installation-guide-rockfon-system-cleanspace-t24-a-e-67_d_05_2024.pdf',
+    },
+    {
+      id: 'eclipse',
+      name: 'Eclipse',
+      path: '/documents/installation/Eclipse/rockfon-system-eclipse-island-installation-guide.pdf',
+    },
+    {
+      id: 'mono-acoustic',
+      name: 'Mono Acoustic',
+      path: '/documents/installation/Mono/Mono-Acoustic-TE-32_D_04_2024.pdf',
+    },
+    {
+      id: 'baffles',
+      name: 'Baffle',
+      path: '/documents/installation/Baffle/Baffle安裝法2023.pdf',
+    },
+    {
+      id: 'x-edge',
+      name: 'X邊緣型式',
+      path: '/documents/installation/X 邊緣型式/X邊緣型式安裝法(UK).pdf',
     },
   ]
 
@@ -338,6 +394,76 @@ function App() {
   ]
 
   const categories = ['基礎產品系列', '進階產品系列', '高階產品系列', '特殊性能產品系列', '創新設計產品系列']
+  const catalogDownloadMap = Object.fromEntries(
+    catalogDownloads.map((catalog) => [catalog.id, catalog])
+  )
+  const productMap = Object.fromEntries(products.map((product) => [product.id, product]))
+  const caseStudyProducts = catalogDownloads
+    .map((catalog) => {
+      const product = productMap[catalog.id]
+
+      if (!product) {
+        return null
+      }
+
+      return {
+        id: product.id,
+        name: catalog.name,
+        fullName: product.name,
+      }
+    })
+    .filter(Boolean)
+  const applicationAreas = [
+    {
+      id: 'office',
+      name: '辦公室',
+      productIds: ['artic', 'pacific', 'tropic', 'blanka', 'sonar', 'color-all', 'mono-acoustic', 'baffles', 'eclipse', 'canva'],
+    },
+    {
+      id: 'healthcare',
+      name: '醫療空間',
+      productIds: ['medicare', 'cleanspace', 'color-all', 'canva', 'blanka'],
+    },
+    {
+      id: 'education',
+      name: '學校',
+      productIds: ['artic', 'tropic', 'blanka', 'sonar', 'color-all', 'mono-acoustic', 'baffles', 'canva', 'eclipse'],
+    },
+    {
+      id: 'sports-leisure',
+      name: '休閒運動',
+      productIds: ['baffles', 'color-all', 'boxer', 'mono-acoustic', 'sonar', 'canva', 'eclipse'],
+    },
+    {
+      id: 'commercial',
+      name: '商業空間',
+      productIds: ['pacific', 'artic', 'tropic', 'blanka', 'sonar', 'color-all', 'mono-acoustic', 'baffles', 'canva', 'eclipse'],
+    },
+    {
+      id: 'industrial',
+      name: '工業空間',
+      productIds: ['baffles', 'color-all', 'cleanspace'],
+    },
+  ].map((area) => ({
+    ...area,
+    products: area.productIds
+      .map((productId) => {
+        const product = productMap[productId]
+        const catalog = catalogDownloadMap[productId]
+
+        if (!product || !catalog) {
+          return null
+        }
+
+        return {
+          id: product.id,
+          name: catalog.name,
+          fullName: product.name,
+          path: catalog.path,
+        }
+      })
+      .filter(Boolean),
+  }))
 
   if (selectedProduct) {
     return (
@@ -464,6 +590,7 @@ function App() {
           <a href="#products">產品系列</a>
           <a href="#applications">應用場域</a>
           <a href="#downloads">送審下載</a>
+          <a href="#case-studies">案例分享</a>
           <a href="#contact">聯絡我們</a>
         </div>
       </nav>
@@ -486,31 +613,6 @@ function App() {
           </div>
         </div>
       </header>
-
-      <section className="section intro">
-        <p className="section-label">Brand Advantage</p>
-        <h2>為高規格建築空間而生</h2>
-        <p className="section-desc">
-          Rockfon 以岩棉為核心材料，提供優異吸音、防火、防潮、低排放與設計彈性，適用於辦公、醫療、教育、商業、潔淨室與公共工程。
-        </p>
-        <div className="brand-proof">
-          <div>
-            <span>01</span>
-            <strong>Acoustic Comfort</strong>
-            <p>Engineered for quieter commercial interiors.</p>
-          </div>
-          <div>
-            <span>02</span>
-            <strong>Material Integrity</strong>
-            <p>Stone wool performance with refined surface finishes.</p>
-          </div>
-          <div>
-            <span>03</span>
-            <strong>Specification Ready</strong>
-            <p>Built for architects, consultants and project delivery.</p>
-          </div>
-        </div>
-      </section>
 
       <section className="section dark-section" id="products">
         <p className="section-label gold">Product Portfolio</p>
@@ -549,12 +651,16 @@ function App() {
         <p className="section-label">Applications</p>
         <h2>應用場域</h2>
         <div className="application-grid">
-          <div className="application-card">辦公室</div>
-          <div className="application-card">醫療空間</div>
-          <div className="application-card">學校</div>
-          <div className="application-card">飯店</div>
-          <div className="application-card">商場</div>
-          <div className="application-card">潔淨室</div>
+          {applicationAreas.map((area) => (
+            <button
+              key={area.id}
+              type="button"
+              className="application-card"
+              onClick={() => setSelectedApplication(area)}
+            >
+              {area.name}
+            </button>
+          ))}
         </div>
       </section>
 
@@ -577,8 +683,31 @@ function App() {
           <div className="download-card">
             <h3>安裝手冊</h3>
             <p>施工方式與系統節點說明。</p>
-            <button>下載 PDF</button>
+            <button type="button" onClick={() => setIsInstallationModalOpen(true)}>
+              下載 PDF
+            </button>
           </div>
+        </div>
+      </section>
+
+      <section className="section case-studies" id="case-studies">
+        <p className="section-label">Case Studies</p>
+        <h2>案例分享</h2>
+        <p className="section-desc">
+          先依產品分類建立案例入口。各產品詳細案例內容之後可直接補進來。
+        </p>
+        <div className="case-study-grid">
+          {caseStudyProducts.map((product) => (
+            <button
+              key={product.id}
+              type="button"
+              className="case-study-card"
+              onClick={() => setSelectedCaseProduct(product)}
+            >
+              <span>{product.name}</span>
+              <small>{product.fullName}</small>
+            </button>
+          ))}
         </div>
       </section>
 
@@ -633,6 +762,114 @@ function App() {
                   </button>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isInstallationModalOpen && (
+        <div
+          className="modal-backdrop"
+          role="presentation"
+          onClick={() => setIsInstallationModalOpen(false)}
+        >
+          <div
+            className="catalog-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="installation-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="modal-close"
+              type="button"
+              aria-label="關閉"
+              onClick={() => setIsInstallationModalOpen(false)}
+            >
+              ×
+            </button>
+            <p className="section-label gold">Installation Guides</p>
+            <h2 id="installation-modal-title">選擇安裝手冊</h2>
+            <div className="catalog-modal-list">
+              {installationDownloads.map((installation) => (
+                <div className="catalog-modal-item" key={installation.path}>
+                  <span>{installation.name}</span>
+                  <button type="button" onClick={() => handlePdfOpen(installation.path)}>
+                    下載
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {selectedApplication && (
+        <div
+          className="modal-backdrop"
+          role="presentation"
+          onClick={() => setSelectedApplication(null)}
+        >
+          <div
+            className="catalog-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="application-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="modal-close"
+              type="button"
+              aria-label="關閉"
+              onClick={() => setSelectedApplication(null)}
+            >
+              ×
+            </button>
+            <p className="section-label gold">Applications</p>
+            <h2 id="application-modal-title">{selectedApplication.name} 對應產品</h2>
+            <div className="catalog-modal-list">
+              {selectedApplication.products.map((product) => (
+                <button
+                  key={`${selectedApplication.id}-${product.id}`}
+                  type="button"
+                  className="application-product-button"
+                  onClick={() => handlePdfOpen(product.path)}
+                >
+                  <span>{product.name}</span>
+                  <small>{product.fullName}</small>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {selectedCaseProduct && (
+        <div
+          className="modal-backdrop"
+          role="presentation"
+          onClick={() => setSelectedCaseProduct(null)}
+        >
+          <div
+            className="catalog-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="case-study-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="modal-close"
+              type="button"
+              aria-label="關閉"
+              onClick={() => setSelectedCaseProduct(null)}
+            >
+              ×
+            </button>
+            <p className="section-label gold">Case Studies</p>
+            <h2 id="case-study-modal-title">{selectedCaseProduct.name} 案例分享</h2>
+            <div className="case-study-placeholder">
+              <strong>{selectedCaseProduct.fullName}</strong>
+              <p>此產品的案例資料之後再補上。目前先保留入口與版位。</p>
             </div>
           </div>
         </div>
