@@ -717,12 +717,12 @@ function App() {
           <h2>需要產品建議或送審協助？</h2>
           <p>我們可協助產品選型、規格比對與工程送審資料準備。</p>
         </div>
-        <form>
-          <input type="text" placeholder="姓名 / 公司" />
-          <input type="email" placeholder="Email" />
-          <input type="text" placeholder="專案名稱" />
-          <textarea placeholder="請簡述需求"></textarea>
-          <button type="button">送出諮詢</button>
+        <form action="https://formspree.io/f/maqkvzad" method="POST">
+          <input type="text" name="name" placeholder="姓名 / 公司" />
+          <input type="email" name="email" placeholder="Email" />
+          <input type="text" name="phone" placeholder="專案名稱" />
+          <textarea name="message" placeholder="請簡述需求"></textarea>
+          <button type="submit">送出諮詢</button>
         </form>
       </section>
 
